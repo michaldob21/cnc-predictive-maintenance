@@ -34,7 +34,14 @@ df = generate_data()
 
 # SIDEBAR
 st.sidebar.markdown("### ⚙️ SETTINGS")
-selected_bearing = st.sidebar.selectbox("🔧 Select Bearing:", [1, 2, 3, 4])
+bearing_names = {
+    1: "Łożysko Wrzeciona Głównego",
+    2: "Łożysko Osi X", 
+    3: "Łożysko Osi Z",
+    4: "Łożysko Pompy Chłodzenia"
+}
+selected_bearing_num = st.sidebar.selectbox("🔧 Wybierz Łożysko:", list(bearing_names.keys()), format_func=lambda x: bearing_names[x])
+selected_bearing = selected_bearing_num
 contamination = st.sidebar.slider("📊 Anomaly Sensitivity:", 0.01, 0.20, 0.05, 0.01)
 
 # ANALYSIS
@@ -59,7 +66,7 @@ with col3:
 st.markdown("---")
 
 # CHART
-st.subheader(f"📈 Bearing #{selected_bearing}")
+st.subheader(f"📈 {bearing_names[selected_bearing]}")
 fig = go.Figure()
 
 normal = bearing_data[bearing_data['Anomaly'] == 1]

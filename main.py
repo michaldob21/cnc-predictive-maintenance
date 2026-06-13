@@ -5,6 +5,13 @@ import pandas as pd
 from sklearn.ensemble import IsolationForest
 from sklearn.preprocessing import StandardScaler
 
+bearing_names = {
+    1: "Łożysko Wrzeciona Głównego",
+    2: "Łożysko Osi X",
+    3: "Łożysko Osi Z",
+    4: "Łożysko Pompy Chłodzenia"
+}
+
 app = FastAPI(
     title="CNC Bearing AI API",
     description="Predictive maintenance API",
@@ -69,12 +76,13 @@ def predict(bearing_unit: int = 1, contamination: float = 0.05):
         warning_days = 0
     
     return {
-        "bearing": bearing_unit,
-        "total_cycles": len(df),
-        "anomalies_found": int(len(anomalies_idx)),
-        "warning_days": float(warning_days),
-        "status": "OK" if warning_days > 30 else "ALERT",
-        "current_temp": float(df['Temp'].iloc[-1])
+    "bearing_id": bearing_unit,
+    "bearing_name": bearing_names[bearing_unit],
+    "total_cycles": len(df),
+    "anomalies_found": int(len(anomalies_idx)),
+    "warning_days": float(warning_days),
+    "status": "OK" if warning_days > 30 else "ALERT",
+    "current_temp": float(df['Temp'].iloc[-1])
     }
 
 if __name__ == "__main__":

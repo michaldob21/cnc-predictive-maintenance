@@ -1,5 +1,5 @@
 # cnc-predictive-maintenance
-# 🔧CNC Bearing Predictive Maintenance AI
+# CNC Bearing Predictive Maintenance AI
 
 Sistem AI do przewidywania awarii łożysk w maszynach CNC. 
 **Ostrzega 100+ dni PRZED awarią.**
@@ -106,4 +106,4 @@ Potem: http://localhost:8000/docs (Swagger UI)
 
 ---
 
-## Struktura
+

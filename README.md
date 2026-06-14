@@ -23,7 +23,7 @@ Sistem AI do przewidywania awarii łożysk w maszynach CNC.
 
 ---
 
-## 🚀 Jak uruchomić
+## Jak uruchomić
 
 ### Wymagania
 - Python 3.8+
